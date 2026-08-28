@@ -149,6 +149,60 @@ orderForm.addEventListener("submit", async (e) => {
 
 });
 
+// Calculate Monthly and Annual Income
+async function calculateIncome() {
 
+  try {
+
+    const querySnapshot = await getDocs(
+      collection(db, "orders")
+    );
+
+    const now = new Date();
+
+    const currentMonth = now.getMonth();
+    const currentYear = now.getFullYear();
+
+    let monthlyIncome = 0;
+    let annualIncome = 0;
+
+    querySnapshot.forEach((docSnap) => {
+
+      const order = docSnap.data();
+
+      if (!order.dateTime) return;
+
+      const orderDate = new Date(order.dateTime);
+      const price = Number(order.price) || 0;
+
+      // Annual income
+      if (orderDate.getFullYear() === currentYear) {
+        annualIncome += price;
+      }
+
+      // Monthly income
+      if (
+        orderDate.getFullYear() === currentYear &&
+        orderDate.getMonth() === currentMonth
+      ) {
+        monthlyIncome += price;
+      }
+
+    });
+
+    document.getElementById("monthlyTotal").textContent =
+      monthlyIncome.toLocaleString("en-IN");
+
+    document.getElementById("annualTotal").textContent =
+      annualIncome.toLocaleString("en-IN");
+
+  } catch (error) {
+
+    console.error("Error calculating income:", error);
+
+  }
+
+}
 // Load orders when website opens
 renderOrders();
+calculateIncome();

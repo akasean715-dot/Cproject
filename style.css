@@ -16,3 +16,30 @@ input, button {
   margin: 5px;
   padding: 8px;
 }
+.income-boxes {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  margin-bottom: 10px;
+}
+
+.income-box {
+  width: 220px;
+  height: 110px;
+  padding: 15px;
+  box-sizing: border-box;
+  background: white;
+  border: 1px solid #ccc;
+  text-align: center;
+}
+
+.income-box h3 {
+  margin: 0;
+  font-size: 14px;
+}
+
+.income-box p {
+  margin: 8px 0 0;
+  font-size: 22px;
+  font-weight: bold;
+}
