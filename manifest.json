@@ -8,7 +8,7 @@
   "description": "Track cake orders and income.",
   "icons": [
     {
-      "src": "app.png",
+      "src": "app.PNG",
       "sizes": "512x512",
       "type": "image/png"
     }
