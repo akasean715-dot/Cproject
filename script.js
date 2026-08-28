@@ -62,8 +62,8 @@ async function renderOrders() {
       const formattedDate = new Date(order.dateTime)
         .toLocaleString("en-US", options);
 
-      li.textContent =
-        `${order.name} - ${order.cake} - ₹${order.price} at ${formattedDate}`;
+      li.textContent = 
+  `${order.name} - ${order.cake} - ₹${order.price || 0} at ${formattedDate}`;
 
 
       // Delete button
