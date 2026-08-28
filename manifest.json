@@ -1,0 +1,9 @@
+{
+  "name": "Cake Order Tracker",
+  "short_name": "Cake Tracker",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#fff8f0",
+  "theme_color": "#d35400",
+  "description": "Track cake orders and income."
+}
