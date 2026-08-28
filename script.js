@@ -44,9 +44,21 @@ async function renderOrders() {
       collection(db, "orders")
     );
 
-    querySnapshot.forEach((docSnap) => {
+    const orders = [];
 
-      const order = docSnap.data();
+    querySnapshot.forEach((docSnap) => {
+      orders.push({
+        id: docSnap.id,
+        ...docSnap.data()
+      });
+    });
+
+    // Sort orders by date and time: earliest first
+    orders.sort((a, b) => {
+      return new Date(a.dateTime) - new Date(b.dateTime);
+    });
+
+    orders.forEach((order) => {
 
       const li = document.createElement("li");
 
@@ -62,9 +74,8 @@ async function renderOrders() {
       const formattedDate = new Date(order.dateTime)
         .toLocaleString("en-US", options);
 
-      li.textContent = 
-  `${order.name} - ${order.cake} - ₹${order.price || 0} at ${formattedDate}`;
-
+      li.textContent =
+        `${order.name} - ${order.cake} - ₹${order.price || 0} at ${formattedDate}`;
 
       // Delete button
       const deleteBtn = document.createElement("button");
@@ -72,17 +83,16 @@ async function renderOrders() {
       deleteBtn.textContent = "Delete";
       deleteBtn.style.marginLeft = "10px";
 
-
       deleteBtn.addEventListener("click", async () => {
 
         await deleteDoc(
-          doc(db, "orders", docSnap.id)
+          doc(db, "orders", order.id)
         );
 
         renderOrders();
+        calculateIncome();
 
       });
-
 
       li.appendChild(deleteBtn);
 
