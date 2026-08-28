@@ -63,7 +63,7 @@ async function renderOrders() {
         .toLocaleString("en-US", options);
 
       li.textContent =
-        `${order.name} - ${order.cake} at ${formattedDate}`;
+        `${order.name} - ${order.cake} - ₹${order.price} at ${formattedDate}`;
 
 
       // Delete button
@@ -110,6 +110,9 @@ orderForm.addEventListener("submit", async (e) => {
   const cake =
     document.getElementById("cakeType").value;
 
+  const price =
+    document.getElementById("cakePrice").value;
+
   const dateTime =
     document.getElementById("orderDateTime").value;
 
@@ -122,6 +125,7 @@ orderForm.addEventListener("submit", async (e) => {
       {
         name: name,
         cake: cake,
+         price: price,
         dateTime: dateTime
       }
     );
