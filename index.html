@@ -20,9 +20,30 @@
   <!-- Orders List -->
   <h2>Upcoming Orders</h2>
   <ul id="orderList"></ul>
+  <!-- Firebase SDK -->
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+    import { getFirestore, collection, addDoc, getDocs, deleteDoc, doc } 
+      from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyAOLlqzezG31BE97H4IcKo0DPHwVjKbUfU",
+      authDomain: "shanlang-167ed.firebaseapp.com",
+      projectId: "shanlang-167ed",
+      storageBucket: "shanlang-167ed.firebasestorage.app",
+      messagingSenderId: "1007124980142",
+      appId: "1:1007124980142:web:2eaac00729da040e75e83f",
+      measurementId: "G-6RZVB443C4"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+    window.db = db; // make Firestore available to script.js
+  </script>
 
   <!-- Script should be at the end of body -->
-  <script src="script.js"></script>
+  <script type="module" src="script.js"></script>
 </body>
 </html>
 

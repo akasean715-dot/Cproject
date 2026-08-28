@@ -1,71 +1,150 @@
-// Check if browser supports notifications
-if ("Notification" in window) {
-  Notification.requestPermission();
-}
+import { initializeApp } 
+  from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
 
+import {
+  getFirestore,
+  collection,
+  addDoc,
+  getDocs,
+  deleteDoc,
+  doc
+} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+
+// Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyAOLlqzezG31BE97H4IcKo0DPHwVjKbUfU",
+  authDomain: "shanlang-167ed.firebaseapp.com",
+  projectId: "shanlang-167ed",
+  storageBucket: "shanlang-167ed.firebasestorage.app",
+  messagingSenderId: "1007124980142",
+  appId: "1:1007124980142:web:2eaac00729da040e75e83f",
+  measurementId: "G-6RZVB443C4"
+};
+
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+
+// Get HTML elements
 const orderForm = document.getElementById("orderForm");
 const orderList = document.getElementById("orderList");
 
-// Load saved orders from localStorage
-let orders = JSON.parse(localStorage.getItem("orders")) || [];
-renderOrders();
 
-orderForm.addEventListener("submit", function(e) {
-  e.preventDefault();
+// Display orders from Firestore
+async function renderOrders() {
 
-  const name = document.getElementById("customerName").value;
-  const cake = document.getElementById("cakeType").value;
-  const dateTime = new Date(document.getElementById("orderDateTime").value);
-
-  const order = { name, cake, dateTime };
-  orders.push(order);
-
-  // Save to localStorage
-  localStorage.setItem("orders", JSON.stringify(orders));
-
-  renderOrders();
-
-  // Schedule notification
-  const now = new Date();
-  const timeUntilOrder = dateTime.getTime() - now.getTime();
-
-  if (timeUntilOrder > 0) {
-    setTimeout(() => {
-      if (Notification.permission === "granted") {
-        new Notification(`Reminder: Bake ${order.cake} for ${order.name}!`);
-      }
-    }, timeUntilOrder);
-  }
-
-  orderForm.reset();
-});
-
-// Render orders list
-function renderOrders() {
   orderList.innerHTML = "";
-  orders.forEach((order, index) => {
-    const li = document.createElement("li");
 
-    const options = { 
-      year: 'numeric', month: 'short', day: 'numeric',
-      hour: 'numeric', minute: 'numeric', hour12: true 
-    };
-    const formattedDate = new Date(order.dateTime).toLocaleString('en-US', options);
+  try {
 
-    li.textContent = `${order.name} - ${order.cake} at ${formattedDate}`;
+    const querySnapshot = await getDocs(
+      collection(db, "orders")
+    );
 
-    const deleteBtn = document.createElement("button");
-    deleteBtn.textContent = "Delete";
-    deleteBtn.style.marginLeft = "10px";
-    deleteBtn.onclick = () => {
-      orders.splice(index, 1);
-      localStorage.setItem("orders", JSON.stringify(orders));
-      renderOrders();
-    };
+    querySnapshot.forEach((docSnap) => {
 
-    li.appendChild(deleteBtn);
-    orderList.appendChild(li);
-  });
+      const order = docSnap.data();
+
+      const li = document.createElement("li");
+
+      const options = {
+        year: "numeric",
+        month: "short",
+        day: "numeric",
+        hour: "numeric",
+        minute: "numeric",
+        hour12: true
+      };
+
+      const formattedDate = new Date(order.dateTime)
+        .toLocaleString("en-US", options);
+
+      li.textContent =
+        `${order.name} - ${order.cake} at ${formattedDate}`;
+
+
+      // Delete button
+      const deleteBtn = document.createElement("button");
+
+      deleteBtn.textContent = "Delete";
+      deleteBtn.style.marginLeft = "10px";
+
+
+      deleteBtn.addEventListener("click", async () => {
+
+        await deleteDoc(
+          doc(db, "orders", docSnap.id)
+        );
+
+        renderOrders();
+
+      });
+
+
+      li.appendChild(deleteBtn);
+
+      orderList.appendChild(li);
+
+    });
+
+  } catch (error) {
+
+    console.error("Error loading orders:", error);
+
+  }
 }
 
 
+// Add new order
+orderForm.addEventListener("submit", async (e) => {
+
+  e.preventDefault();
+
+
+  const name =
+    document.getElementById("customerName").value;
+
+  const cake =
+    document.getElementById("cakeType").value;
+
+  const dateTime =
+    document.getElementById("orderDateTime").value;
+
+
+  try {
+
+    // Save to Firestore
+    await addDoc(
+      collection(db, "orders"),
+      {
+        name: name,
+        cake: cake,
+        dateTime: dateTime
+      }
+    );
+
+
+    // Clear form
+    orderForm.reset();
+
+
+    // Reload orders
+    renderOrders();
+
+
+  } catch (error) {
+
+    console.error("Error saving order:", error);
+
+    alert("Could not save the order. Check the browser console.");
+
+  }
+
+});
+
+
+// Load orders when website opens
+renderOrders();
