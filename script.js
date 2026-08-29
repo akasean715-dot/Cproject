@@ -74,14 +74,18 @@ async function renderOrders() {
       const formattedDate = new Date(order.dateTime)
         .toLocaleString("en-US", options);
 
-      li.textContent =
-        `${order.name} - ${order.cake} - ₹${order.price || 0} at ${formattedDate}`;
+      li.innerHTML = `
+        <strong>${order.name} - ${order.cake}</strong>
+        <span class="order-details">
+        <span>📅 ${formattedDate}</span>
+        <span><b>₹</b> ${order.price || 0}</span>
+       </span>
+`;
 
       // Delete button
       const deleteBtn = document.createElement("button");
 
       deleteBtn.textContent = "Delete";
-      deleteBtn.style.marginLeft = "10px";
 
       deleteBtn.addEventListener("click", async () => {
 
