@@ -7,7 +7,8 @@ import {
   addDoc,
   getDocs,
   deleteDoc,
-  doc
+  doc,
+  updateDoc
 } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
 
@@ -58,9 +59,13 @@ async function renderOrders() {
       return new Date(a.dateTime) - new Date(b.dateTime);
     });
 
-    orders.forEach((order) => {
+   orders.forEach((order) => {
 
-      const li = document.createElement("li");
+  if (order.status === "completed") {
+    return;
+  }
+
+  const li = document.createElement("li");
 
       const options = {
         year: "numeric",
@@ -86,22 +91,47 @@ async function renderOrders() {
       `;
 
       // Delete button
-      const deleteBtn = document.createElement("button");
+     // Complete button
+       const completeBtn = document.createElement("button");
 
-      deleteBtn.textContent = "Delete";
+       completeBtn.textContent = "Complete";
 
-      deleteBtn.addEventListener("click", async () => {
+       completeBtn.addEventListener("click", async () => {
 
-        await deleteDoc(
-          doc(db, "orders", order.id)
+         await updateDoc(
+           doc(db, "orders", order.id),
+           {
+             status: "completed"
+           }
         );
 
-        renderOrders();
-        calculateIncome();
+  renderOrders();
+  calculateIncome();
 
-      });
+});
 
-      li.appendChild(deleteBtn);
+
+// Delete button
+const deleteBtn = document.createElement("button");
+
+deleteBtn.textContent = "Delete";
+
+deleteBtn.addEventListener("click", async () => {
+
+  await deleteDoc(
+    doc(db, "orders", order.id)
+  );
+
+  renderOrders();
+  calculateIncome();
+
+});
+
+completeBtn.classList.add("complete-btn");
+deleteBtn.classList.add("delete-btn");
+
+li.appendChild(completeBtn);
+li.appendChild(deleteBtn);
 
       orderList.appendChild(li);
 
@@ -143,7 +173,8 @@ orderForm.addEventListener("submit", async (e) => {
         name: name,
         cake: cake,
          price: price,
-        dateTime: dateTime
+        dateTime: dateTime,
+        status: "pending"
       }
     );
 

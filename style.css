@@ -539,3 +539,224 @@ h2::after {
     font-size: 11px;
   }
 }
+/* =========================================
+   ORDER HISTORY BUTTON
+========================================= */
+
+.history-button {
+  display: inline-block;
+  margin-bottom: 20px;
+  padding: 11px 18px;
+
+  background: white;
+  color: #f52f67;
+
+  border: 2px solid #f52f67;
+  border-radius: 10px;
+
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: bold;
+
+  transition: 0.2s;
+}
+
+.history-button:hover {
+  background: #fff0f4;
+  transform: translateY(-1px);
+}
+
+
+/* =========================================
+   BACK TO UPCOMING BUTTON
+========================================= */
+
+.back-button {
+  display: inline-block;
+  margin-bottom: 20px;
+  padding: 11px 18px;
+
+  background: white;
+  color: #f52f67;
+
+  border: 2px solid #f52f67;
+  border-radius: 10px;
+
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: bold;
+
+  transition: 0.2s;
+}
+
+.back-button:hover {
+  background: #fff0f4;
+  transform: translateY(-1px);
+}
+
+
+/* =========================================
+   HISTORY PAGE MOBILE
+========================================= */
+
+@media (max-width: 800px) {
+
+  .history-button,
+  .back-button {
+    padding: 9px 14px;
+    font-size: 13px;
+    margin-bottom: 15px;
+  }
+
+}
+/* =========================================
+   COMPLETE + DELETE BUTTONS
+========================================= */
+
+/* COMPLETE BUTTON */
+#orderList li .complete-btn {
+  position: absolute;
+  right: 145px;
+  top: 50%;
+  transform: translateY(-50%);
+
+  width: 110px;
+  min-width: 110px;
+  height: 44px;
+
+  margin: 0;
+  padding: 0 10px;
+
+  background: white;
+  border: 2px solid #4caf50;
+  border-radius: 10px;
+
+  color: #4caf50;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* DELETE BUTTON */
+#orderList li .delete-btn {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+
+  width: 110px;
+  min-width: 110px;
+  height: 44px;
+
+  margin: 0;
+  padding: 0 10px;
+
+  background: white;
+  border: 2px solid #ff4b7b;
+  border-radius: 10px;
+
+  color: #ed2d63;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Icons */
+#orderList li .complete-btn::before {
+  content: "✓ ";
+}
+
+#orderList li .delete-btn::before {
+  content: "🗑 ";
+}
+
+/* Hover */
+#orderList li .complete-btn:hover {
+  background: #f0fff3;
+}
+
+#orderList li .delete-btn:hover {
+  background: #fff0f4;
+}
+
+
+/* =========================================
+   MOBILE COMPLETE + DELETE BUTTONS
+========================================= */
+
+@media (max-width: 800px) {
+
+  #orderList li .complete-btn {
+    right: 82px;
+    top: 50%;
+    transform: translateY(-50%);
+
+    width: 60px;
+    min-width: 60px;
+    height: 32px;
+
+    padding: 0 3px;
+
+    font-size: 10px;
+    border-radius: 7px;
+  }
+
+  #orderList li .delete-btn {
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+
+    width: 58px;
+    min-width: 58px;
+    height: 32px;
+
+    padding: 0 3px;
+
+    font-size: 10px;
+    border-radius: 7px;
+  }
+
+  #orderList li .complete-btn::before {
+    content: "✓ ";
+    font-size: 11px;
+  }
+
+  #orderList li .delete-btn::before {
+    content: "🗑 ";
+    font-size: 10px;
+  }
+
+  #orderList li .complete-btn:hover,
+  #orderList li .delete-btn:hover {
+    transform: translateY(-50%);
+  }
+}
+
+
+/* =========================================
+   VERY SMALL PHONES
+========================================= */
+
+@media (max-width: 400px) {
+
+  #orderList li .complete-btn {
+    right: 72px;
+
+    width: 60px;
+    min-width: 60px;
+    height: 32px;
+
+    font-size: 10px;
+  }
+
+  #orderList li .delete-btn {
+    right: 7px;
+
+    width: 57px;
+    min-width: 57px;
+    height: 32px;
+
+    font-size: 10px;
+  }
+
+}
