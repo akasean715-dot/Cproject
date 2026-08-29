@@ -44,66 +44,77 @@ input, button {
   font-weight: bold;
 }
 /* =========================================
-   NEW CAKE ORDER TRACKER DESIGN
-   Added styling only — existing code preserved
+   CAKE ORDER TRACKER
+   Compact + Mobile Friendly Design
 ========================================= */
 
-/* Page */
+* {
+  box-sizing: border-box;
+}
+
 body {
   font-family: Arial, Helvetica, sans-serif;
   background: #fff8fa;
   margin: 0;
-  padding: 30px 34px 50px;
+  padding: 25px 34px 40px;
   color: #222;
 }
 
-/* Main title */
+/* =========================================
+   TITLE
+========================================= */
+
 h1 {
   color: #f52f67;
-  font-size: 42px;
+  font-size: 38px;
   font-weight: 800;
-  margin: 10px 0 25px;
+  margin: 8px 0 22px;
 }
 
 h1::after {
   content: " 🍰";
-  font-size: 30px;
+  font-size: 27px;
 }
 
-/* Income boxes */
+/* =========================================
+   INCOME BOXES
+========================================= */
+
 .income-boxes {
   display: flex;
-  gap: 15px;
+  gap: 12px;
   justify-content: flex-end;
-  margin-top: -80px;
-  margin-bottom: 40px;
+  margin-top: -75px;
+  margin-bottom: 30px;
 }
 
 .income-box {
-  width: 270px;
-  height: 130px;
-  padding: 25px;
+  width: 255px;
+  height: 115px;
+  padding: 20px;
   background: white;
   border: 1px solid #f0e5e8;
-  border-radius: 15px;
+  border-radius: 14px;
   text-align: left;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.07);
   position: relative;
 }
 
 .income-box::before {
   content: "📅";
   position: absolute;
-  left: 18px;
-  top: 35px;
-  width: 58px;
-  height: 58px;
+  left: 16px;
+  top: 28px;
+  width: 52px;
+  height: 52px;
   background: #fff0f4;
   border-radius: 50%;
+
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 25px;
+
+  font-size: 22px;
 }
 
 .income-box:nth-child(2)::before {
@@ -111,44 +122,51 @@ h1::after {
 }
 
 .income-box h3 {
-  margin: 0 0 0 65px;
-  font-size: 15px;
+  margin: 0 0 0 60px;
+  font-size: 14px;
   white-space: nowrap;
 }
 
 .income-box p {
-  margin: 8px 0 0 65px;
-  font-size: 28px;
+  margin: 7px 0 0 60px;
+  font-size: 25px;
   font-weight: bold;
   color: #f52f67;
 }
 
-/* Order form container */
+/* =========================================
+   ORDER FORM
+========================================= */
+
 #orderForm {
-  margin-bottom: 35px;
-  padding: 27px 25px;
+  margin-bottom: 30px;
+  padding: 22px 24px;
+
   background: #fff4f7;
   border: 1px solid #f8dfe7;
   border-radius: 14px;
-  box-shadow: 0 5px 18px rgba(245, 47, 103, 0.07);
+
+  box-shadow: 0 4px 15px rgba(245, 47, 103, 0.06);
 
   display: flex;
-  gap: 17px;
+  gap: 14px;
 }
 
-/* Form inputs */
+/* Inputs */
+
 #orderForm input {
   margin: 0;
-  height: 60px;
-  padding: 0 17px;
+  height: 55px;
+  padding: 0 15px;
+
   flex: 1;
   min-width: 0;
 
   border: 1px solid #dddfe3;
   border-radius: 9px;
-  background: white;
 
-  font-size: 16px;
+  background: white;
+  font-size: 15px;
   outline: none;
 }
 
@@ -157,11 +175,12 @@ h1::after {
   box-shadow: 0 0 0 3px rgba(245, 47, 103, 0.08);
 }
 
-/* Add Order button */
+/* Add Order */
+
 #orderForm button {
   margin: 0;
-  height: 60px;
-  padding: 0 28px;
+  height: 55px;
+  padding: 0 24px;
 
   border: none;
   border-radius: 10px;
@@ -169,128 +188,161 @@ h1::after {
   background: linear-gradient(135deg, #ff3971, #f52f67);
   color: white;
 
-  font-size: 17px;
+  font-size: 16px;
   font-weight: bold;
 
   cursor: pointer;
   white-space: nowrap;
 
-  box-shadow: 0 5px 12px rgba(245, 47, 103, 0.25);
+  box-shadow: 0 4px 10px rgba(245, 47, 103, 0.22);
+
   transition: 0.2s;
 }
 
 #orderForm button::before {
   content: "⊕ ";
-  font-size: 20px;
+  font-size: 18px;
 }
 
 #orderForm button:hover {
   transform: translateY(-2px);
 }
 
-/* Upcoming Orders heading */
+/* =========================================
+   UPCOMING ORDERS
+========================================= */
+
 h2 {
-  margin-top: 45px;
-  margin-bottom: 28px;
-  padding-left: 45px;
+  margin-top: 38px;
+  margin-bottom: 22px;
+  padding-left: 43px;
 
   color: #f52f67;
-  font-size: 27px;
+  font-size: 26px;
+
   position: relative;
 }
 
 h2::before {
   content: "▣";
+
   position: absolute;
   left: 0;
-  top: -4px;
-  font-size: 30px;
+  top: -3px;
+
+  font-size: 27px;
 }
 
 h2::after {
   content: "";
+
   display: block;
-  width: 86px;
+
+  width: 82px;
   height: 3px;
+
   background: #f52f67;
-  margin-top: 12px;
+
+  margin-top: 10px;
 }
 
-/* Orders list */
+/* =========================================
+   ORDERS LIST
+========================================= */
+
 #orderList {
   list-style: none;
+
   margin: 0;
   padding: 0;
 
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
 }
 
-/* Individual order card */
+/* Individual order */
+
 #orderList li {
-  min-height: 115px;
-  padding: 25px 170px 25px 120px;
+  min-height: 85px;
+
+  padding: 18px 150px 18px 105px;
 
   background: white;
+
   border: 1px solid #eee7e9;
   border-radius: 14px;
 
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.07);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06);
 
   position: relative;
 
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  align-items: center;
 
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 600;
+
+  line-height: 1.45;
 }
 
-/* Cake icon circle */
+/* Cake icon */
+
 #orderList li::before {
   content: "🍰";
 
   position: absolute;
-  left: 25px;
+
+  left: 20px;
   top: 50%;
+
   transform: translateY(-50%);
 
-  width: 68px;
-  height: 68px;
+  width: 58px;
+  height: 58px;
 
   background: #fff0f4;
+
   border-radius: 50%;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  font-size: 30px;
+  font-size: 26px;
 }
 
-/* Delete button */
+/* =========================================
+   DELETE BUTTON
+========================================= */
+
 #orderList li button {
   position: absolute;
-  right: 24px;
+
+  right: 20px;
   top: 50%;
+
   transform: translateY(-50%);
 
-  min-width: 125px;
-  height: 52px;
+  min-width: 110px;
+  width: auto;
+  height: 44px;
 
   margin: 0;
+  padding: 0 17px;
 
   background: white;
+
   border: 2px solid #ff4b7b;
   border-radius: 10px;
 
   color: #ed2d63;
-  font-size: 16px;
+
+  font-size: 15px;
   font-weight: bold;
 
   cursor: pointer;
+
   transition: 0.2s;
 }
 
@@ -310,127 +362,216 @@ h2::after {
 @media (max-width: 800px) {
 
   body {
-    padding: 20px 15px 40px;
+    padding: 18px 12px 30px;
   }
+
+  /* Title */
 
   h1 {
-    font-size: 30px;
+    font-size: 28px;
+    margin-bottom: 20px;
   }
 
+  h1::after {
+    font-size: 22px;
+  }
+
+  /* Income boxes */
+
   .income-boxes {
-    margin-top: 10px;
-    margin-bottom: 25px;
+    margin-top: 0;
+    margin-bottom: 22px;
+
     flex-direction: column;
-    justify-content: stretch;
+    gap: 10px;
   }
 
   .income-box {
     width: 100%;
+    height: 90px;
+    padding: 16px;
   }
+
+  .income-box::before {
+    left: 14px;
+    top: 19px;
+
+    width: 50px;
+    height: 50px;
+
+    font-size: 21px;
+  }
+
+  .income-box h3 {
+    margin-left: 58px;
+    font-size: 13px;
+  }
+
+  .income-box p {
+    margin-left: 58px;
+    margin-top: 5px;
+    font-size: 23px;
+  }
+
+  /* Form */
 
   #orderForm {
     flex-direction: column;
-    padding: 20px;
+
+    padding: 16px;
+    gap: 10px;
+
+    margin-bottom: 25px;
   }
 
   #orderForm input,
   #orderForm button {
     width: 100%;
     flex: none;
+    height: 50px;
   }
+
+  #orderForm button {
+    font-size: 15px;
+  }
+
+  /* Heading */
+
+  h2 {
+    margin-top: 30px;
+    margin-bottom: 18px;
+
+    padding-left: 38px;
+
+    font-size: 23px;
+  }
+
+  h2::before {
+    font-size: 24px;
+  }
+
+  h2::after {
+    width: 75px;
+    margin-top: 8px;
+  }
+
+  /* Order list */
+
+  #orderList {
+    gap: 9px;
+  }
+
+  /* SMALL MOBILE ORDER CARD */
 
   #orderList li {
-    min-height: 150px;
-    padding: 22px 20px 90px 95px;
+    min-height: 82px;
+
+    padding: 14px 15px 14px 82px;
+
+    border-radius: 13px;
+
+    font-size: 14px;
+    line-height: 1.4;
+
+    /* Important: keeps the card compact */
+    display: flex;
+    align-items: center;
   }
+
+  /* Cake icon */
 
   #orderList li::before {
-    left: 18px;
-    width: 58px;
-    height: 58px;
+    left: 14px;
+
+    width: 54px;
+    height: 54px;
+
+    font-size: 24px;
   }
 
+  /* SMALL DELETE BUTTON */
+
   #orderList li button {
-    left: 95px;
-    right: auto;
+    position: absolute;
+
+    right: 12px;
+    bottom: 12px;
+
+    left: auto;
     top: auto;
-    bottom: 18px;
+
     transform: none;
+
+    width: auto;
+    min-width: 0;
+
+    height: 38px;
+
+    padding: 0 14px;
+
+    font-size: 14px;
+
+    border-radius: 9px;
+  }
+
+  #orderList li button::before {
+    content: "🗑 ";
   }
 
   #orderList li button:hover {
     transform: scale(1.03);
   }
-}
-.order-details {
-  display: flex;
-  gap: 25px;
-  margin-top: 10px;
-  color: #777;
-  font-weight: normal;
-}
 
-.order-details b {
-  color: #f52f67;
-  font-size: 18px;
-}
+  /*
+     Give the order text enough room
+     so it doesn't go underneath Delete.
+  */
 
-@media (max-width: 800px) {
-  .order-details {
-    flex-direction: column;
-    gap: 6px;
+  #orderList li {
+    padding-right: 100px;
   }
 }
-/* Make order cards smaller */
-#orderList li {
-  min-height: 80px;
-  padding: 15px 160px 15px 105px;
-}
 
-/* Smaller cake icon */
-#orderList li::before {
-  width: 55px;
-  height: 55px;
-  left: 20px;
-  font-size: 25px;
-}
+/* =========================================
+   VERY SMALL PHONES
+========================================= */
 
-/* Keep date and price compact */
-.order-details {
-  margin-top: 7px;
-  gap: 20px;
-}
-#orderList li {
-  min-height: 65px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-}
-/* Make order cards slightly smaller */
-#orderList li {
-  min-height: 60px;
-  padding: 12px 145px 12px 95px;
-  font-size: 15px;
-}
+@media (max-width: 400px) {
 
-/* Smaller cake circle */
-#orderList li::before {
-  width: 50px;
-  height: 50px;
-  left: 20px;
-  font-size: 23px;
-}
+  body {
+    padding: 15px 10px 25px;
+  }
 
-/* Smaller date and price */
-.order-details {
-  margin-top: 5px;
-  gap: 18px;
-  font-size: 14px;
-}
+  h1 {
+    font-size: 25px;
+  }
 
-/* Smaller delete button */
-#orderList li button {
-  right: 20px;
-  min-width: 110px;
-  height: 45px;
-  font-size: 14px;
+  #orderList li {
+    min-height: 78px;
+
+    padding-left: 72px;
+    padding-right: 92px;
+
+    font-size: 13px;
+  }
+
+  #orderList li::before {
+    left: 11px;
+
+    width: 50px;
+    height: 50px;
+
+    font-size: 22px;
+  }
+
+  #orderList li button {
+    right: 10px;
+    bottom: 10px;
+
+    height: 36px;
+
+    padding: 0 11px;
+
+    font-size: 13px;
+  }
 }
