@@ -100,25 +100,32 @@ h1::after {
   position: relative;
 }
 
+/* Monthly Income - Calendar Icon */
 .income-box::before {
-  content: "📅";
+  content: "";
   position: absolute;
-  left: 16px;
-  top: 28px;
-  width: 52px;
-  height: 52px;
-  background: #fff0f4;
+  left: 18px;
+  top: 35px;
+  width: 58px;
+  height: 58px;
+  background-color: #fff0f4;
   border-radius: 50%;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect x='4' y='5' width='16' height='15' rx='1.5' fill='none' stroke='%23f52f67' stroke-width='2'/%3E%3Cpath d='M8 3v4M16 3v4M4 9h16' fill='none' stroke='%23f52f67' stroke-width='2'/%3E%3Cpath d='M8 13h2M14 13h2M8 17h2M14 17h2' stroke='%23f52f67' stroke-width='1.5'/%3E%3C/svg%3E");
 
-  font-size: 22px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 27px 27px;
 }
 
+
+/* Annual Income - Bar Chart Icon */
 .income-box:nth-child(2)::before {
-  content: "📊";
+  content: "";
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M5 20V10' stroke='%23f52f67' stroke-width='2.5'/%3E%3Cpath d='M12 20V5' stroke='%23f52f67' stroke-width='2.5'/%3E%3Cpath d='M19 20V8' stroke='%23f52f67' stroke-width='2.5'/%3E%3Cpath d='M3 20h18' stroke='%23f52f67' stroke-width='2'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 29px 29px;
 }
 
 .income-box h3 {
