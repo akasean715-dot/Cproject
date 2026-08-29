@@ -582,3 +582,36 @@ h2::after {
     font-size: 13px;
   }
 }
+/* Order date and price */
+.order-details {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  margin-top: 8px;
+  font-size: 15px;
+  font-weight: normal;
+}
+
+.order-date {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: #666;
+}
+
+/* Clean pink calendar icon */
+.calendar-icon {
+  width: 17px;
+  height: 17px;
+  display: inline-block;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect x='4' y='5' width='16' height='15' rx='1.5' fill='none' stroke='%23f52f67' stroke-width='2'/%3E%3Cpath d='M8 3v4M16 3v4M4 9h16' fill='none' stroke='%23f52f67' stroke-width='2'/%3E%3Cpath d='M8 13h2M14 13h2M8 17h2M14 17h2' stroke='%23f52f67' stroke-width='1.5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  flex-shrink: 0;
+}
+
+.order-price {
+  color: #666;
+  font-weight: normal;
+}

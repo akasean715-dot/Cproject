@@ -75,12 +75,15 @@ async function renderOrders() {
         .toLocaleString("en-US", options);
 
       li.innerHTML = `
-        <strong>${order.name} - ${order.cake}</strong>
-        <span class="order-details">
-        <span>📅 ${formattedDate}</span>
-        <span><b>₹</b> ${order.price || 0}</span>
-       </span>
-`;
+        <div class="order-name">${order.name} - ${order.cake}</div>
+        <div class="order-details">
+          <span class="order-date">
+            <span class="calendar-icon"></span>
+            ${formattedDate}
+          </span>
+          <span class="order-price">₹ ${order.price || 0}</span>
+        </div>
+      `;
 
       // Delete button
       const deleteBtn = document.createElement("button");
