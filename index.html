@@ -35,8 +35,73 @@
   <h2>Upcoming Orders</h2>
 
   <a href="history.html" class="history-button">
-  📜 Order History
-  </a>
+
+  <svg class="history-icon"
+       viewBox="0 0 100 100"
+       xmlns="http://www.w3.org/2000/svg">
+
+    <!-- Document -->
+    <path
+      d="M25 12
+         H70
+         Q82 12 82 25
+         V55"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="8"
+      stroke-linecap="round"/>
+
+    <path
+      d="M25 12
+         Q15 12 15 25
+         V75
+         Q15 88 28 88
+         H55"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="8"
+      stroke-linecap="round"/>
+
+    <!-- List lines -->
+    <line x1="32" y1="32" x2="58" y2="32"
+          stroke="currentColor" stroke-width="7" stroke-linecap="round"/>
+
+    <line x1="32" y1="48" x2="58" y2="48"
+          stroke="currentColor" stroke-width="7" stroke-linecap="round"/>
+
+    <line x1="32" y1="64" x2="58" y2="64"
+          stroke="currentColor" stroke-width="7" stroke-linecap="round"/>
+
+    <!-- List dots -->
+    <circle cx="70" cy="32" r="4" fill="currentColor"/>
+    <circle cx="70" cy="48" r="4" fill="currentColor"/>
+    <circle cx="70" cy="64" r="4" fill="currentColor"/>
+
+    <!-- Clock -->
+    <circle
+      cx="65"
+      cy="68"
+      r="20"
+      fill="#fff8fa"
+      stroke="currentColor"
+      stroke-width="7"/>
+
+    <!-- Clock hands -->
+    <line x1="65" y1="68" x2="65" y2="56"
+          stroke="currentColor" stroke-width="6" stroke-linecap="round"/>
+
+    <line x1="65" y1="68" x2="76" y2="72"
+          stroke="currentColor" stroke-width="6" stroke-linecap="round"/>
+
+    <!-- Magnifying/clock handle -->
+    <line x1="79" y1="83" x2="90" y2="94"
+          stroke="currentColor" stroke-width="7" stroke-linecap="round"/>
+
+  </svg>
+
+  Order History
+
+</a>
 
   <ul id="orderList"></ul>
   <!-- Firebase SDK -->
