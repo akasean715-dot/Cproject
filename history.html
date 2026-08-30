@@ -8,18 +8,225 @@
 
   <link rel="stylesheet" href="style.css">
 
+  <!-- History Page Only -->
+  <style>
+    /* Make History page match the main page */
+    body {
+      background: #fff8fa;
+    }
+
+    /* History orders */
+    #historyList {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    #historyList li {
+      min-height: 65px;
+      padding: 10px 130px 10px 85px;
+
+      background: white;
+
+      border: 1px solid #eee7e9;
+      border-radius: 14px;
+
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06);
+
+      position: relative;
+
+      display: flex;
+      align-items: center;
+
+      font-size: 15px;
+      font-weight: 600;
+      line-height: 1.45;
+    }
+
+    /* Cake icon */
+    #historyList li::before {
+      content: "🍰";
+
+      position: absolute;
+      left: 15px;
+      top: 50%;
+
+      transform: translateY(-50%);
+
+      width: 45px;
+      height: 45px;
+
+      background: #fff0f4;
+      border-radius: 50%;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      font-size: 21px;
+    }
+
+    /* Delete button */
+    #historyList li button {
+      position: absolute;
+
+      right: 15px;
+      top: 50%;
+
+      transform: translateY(-50%);
+
+      width: 95px;
+      min-width: 95px;
+      height: 38px;
+
+      margin: 0;
+      padding: 0 10px;
+
+      background: white;
+
+      border: 2px solid #ff4b7b;
+      border-radius: 10px;
+
+      color: #ed2d63;
+
+      font-size: 13px;
+      font-weight: bold;
+
+      cursor: pointer;
+    }
+
+    #historyList li button::before {
+      content: "🗑 ";
+    }
+
+    #historyList li button:hover {
+      background: #fff0f4;
+    }
+
+    /* Mobile */
+    @media (max-width: 800px) {
+
+      #historyList {
+        gap: 9px;
+      }
+
+      #historyList li {
+        min-height: 58px;
+        height: auto;
+
+        padding: 8px 70px 8px 65px;
+
+        border-radius: 12px;
+
+        font-size: 14px;
+        line-height: 1.3;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+      }
+
+      /* Cake icon */
+      #historyList li::before {
+        left: 10px;
+
+        width: 42px;
+        height: 42px;
+
+        font-size: 19px;
+      }
+
+      /* Details */
+      #historyList .order-details {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+
+        margin-top: 4px;
+
+        font-size: 13px;
+        line-height: 1.2;
+        white-space: nowrap;
+      }
+
+      #historyList .calendar-icon {
+        width: 15px;
+        height: 15px;
+      }
+
+      /* Delete button */
+      #historyList li button {
+        right: 7px;
+        top: 50%;
+
+        width: 55px;
+        min-width: 55px;
+        height: 30px;
+
+        padding: 0 3px;
+
+        border-radius: 7px;
+
+        font-size: 10px;
+      }
+
+      #historyList li button::before {
+        font-size: 10px;
+      }
+    }
+
+    /* Very small phones */
+@media (max-width: 400px) {
+
+  #historyList li {
+    min-height: 58px;
+    padding: 8px 70px 8px 65px;
+    font-size: 13px;
+  }
+
+  #historyList li::before {
+    left: 9px;
+    width: 42px;
+    height: 42px;
+    font-size: 19px;
+  }
+
+  #historyList .order-details {
+    gap: 8px;
+    font-size: 12px;
+  }
+
+  #historyList .calendar-icon {
+    width: 14px;
+    height: 14px;
+  }
+
+  #historyList li button {
+    right: 7px;
+    width: 55px;
+    min-width: 55px;
+    height: 30px;
+    font-size: 10px;
+  }
+}
+  </style>
 </head>
 
 <body>
 
   <h1>Order History</h1>
 
-  <a href="index.html" class="back-button">← Upcoming Orders</a>
+  <a href="index.html" class="back-button">
+    ← Upcoming Orders
+  </a>
 
   <h2>Completed Orders</h2>
 
   <ul id="historyList"></ul>
-
 
   <script type="module" src="history.js"></script>
 
