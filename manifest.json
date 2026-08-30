@@ -4,7 +4,7 @@
   "start_url": "./",
   "display": "standalone",
   "background_color": "#fff8f0",
-  "theme_color": "#d35400",
+  "theme_color": "#FF5C89",
   "description": "Track cake orders and income.",
   "icons": [
     {
