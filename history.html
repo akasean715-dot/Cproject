@@ -27,7 +27,7 @@
 
     #historyList li {
       min-height: 65px;
-      padding: 10px 130px 10px 85px;
+      padding: 10px 255px 10px 85px;
 
       background: white;
 
@@ -69,8 +69,11 @@
       font-size: 21px;
     }
 
-    /* Delete button */
-    #historyList li button {
+    /* =========================================
+       DELETE BUTTON
+    ========================================= */
+
+    #historyList li .delete-btn {
       position: absolute;
 
       right: 15px;
@@ -98,15 +101,63 @@
       cursor: pointer;
     }
 
-    #historyList li button::before {
+    #historyList li .delete-btn::before {
       content: "🗑 ";
     }
 
-    #historyList li button:hover {
+    #historyList li .delete-btn:hover {
       background: #fff0f4;
     }
 
-    /* Mobile */
+
+    /* =========================================
+       RESTORE BUTTON
+    ========================================= */
+
+    #historyList li .restore-btn {
+      position: absolute;
+
+      right: 125px;
+      top: 50%;
+
+      transform: translateY(-50%);
+
+      width: 95px;
+      min-width: 95px;
+      height: 38px;
+
+      margin: 0;
+      padding: 0 10px;
+
+      background: white;
+
+      border: 2px solid #4caf50;
+      border-radius: 10px;
+
+      color: #4caf50;
+
+      font-size: 13px;
+      font-weight: bold;
+
+      cursor: pointer;
+
+      transition: 0.2s;
+    }
+
+    #historyList li .restore-btn::before {
+      content: "↩ ";
+    }
+
+    #historyList li .restore-btn:hover {
+      background: #f0fff3;
+      transform: translateY(-50%) scale(1.03);
+    }
+
+
+    /* =========================================
+       MOBILE
+    ========================================= */
+
     @media (max-width: 800px) {
 
       #historyList {
@@ -117,7 +168,7 @@
         min-height: 58px;
         height: auto;
 
-        padding: 8px 70px 8px 65px;
+        padding: 8px 125px 8px 65px;
 
         border-radius: 12px;
 
@@ -158,8 +209,11 @@
         height: 15px;
       }
 
-      /* Delete button */
-      #historyList li button {
+      /* =========================================
+         MOBILE DELETE BUTTON
+      ========================================= */
+
+      #historyList li .delete-btn {
         right: 7px;
         top: 50%;
 
@@ -174,46 +228,94 @@
         font-size: 10px;
       }
 
-      #historyList li button::before {
+      #historyList li .delete-btn::before {
+        font-size: 10px;
+      }
+
+
+      /* =========================================
+         MOBILE RESTORE BUTTON
+      ========================================= */
+
+      #historyList li .restore-btn {
+        right: 67px;
+        top: 50%;
+
+        width: 55px;
+        min-width: 55px;
+        height: 30px;
+
+        padding: 0 3px;
+
+        border-radius: 7px;
+
+        font-size: 10px;
+      }
+
+      #historyList li .restore-btn::before {
         font-size: 10px;
       }
     }
 
-    /* Very small phones */
-@media (max-width: 400px) {
 
-  #historyList li {
-    min-height: 58px;
-    padding: 8px 70px 8px 65px;
-    font-size: 13px;
-  }
+    /* =========================================
+       VERY SMALL PHONES
+    ========================================= */
 
-  #historyList li::before {
-    left: 9px;
-    width: 42px;
-    height: 42px;
-    font-size: 19px;
-  }
+    @media (max-width: 400px) {
 
-  #historyList .order-details {
-    gap: 8px;
-    font-size: 12px;
-  }
+      #historyList li {
+        min-height: 58px;
 
-  #historyList .calendar-icon {
-    width: 14px;
-    height: 14px;
-  }
+        padding: 8px 125px 8px 65px;
 
-  #historyList li button {
-    right: 7px;
-    width: 55px;
-    min-width: 55px;
-    height: 30px;
-    font-size: 10px;
-  }
-}
-  </style>
+        font-size: 13px;
+      }
+
+      #historyList li::before {
+        left: 9px;
+
+        width: 42px;
+        height: 42px;
+
+        font-size: 19px;
+      }
+
+      #historyList .order-details {
+        gap: 8px;
+        font-size: 12px;
+      }
+
+      #historyList .calendar-icon {
+        width: 14px;
+        height: 14px;
+      }
+
+      /* Small phone DELETE */
+      #historyList li .delete-btn {
+        right: 7px;
+
+        width: 55px;
+        min-width: 55px;
+
+        height: 30px;
+
+        font-size: 10px;
+      }
+
+      /* Small phone RESTORE */
+      #historyList li .restore-btn {
+        right: 67px;
+
+        width: 55px;
+        min-width: 55px;
+
+        height: 30px;
+
+        font-size: 10px;
+      }
+    }
+</style>
 </head>
 
 <body>

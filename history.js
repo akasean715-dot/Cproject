@@ -1,4 +1,4 @@
-import { initializeApp } 
+import { initializeApp }
   from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
 
 import {
@@ -6,12 +6,13 @@ import {
   collection,
   getDocs,
   deleteDoc,
-  doc
+  doc,
+  updateDoc
 } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAOLlqzezG31BE97H4IcKo0DPHwVjKbUfU",
+  apiKey: "AIzaSyAOLlqzezG31BE97H4IcKo0DPHwVjKbUfG",
   authDomain: "shanlang-167ed.firebaseapp.com",
   projectId: "shanlang-167ed",
   storageBucket: "shanlang-167ed.firebasestorage.app",
@@ -89,23 +90,76 @@ async function renderHistory() {
       `;
 
 
-      // Delete button
-      const deleteBtn = document.createElement("button");
+      // =========================
+      // RESTORE BUTTON
+      // =========================
 
-      deleteBtn.textContent = "Delete";
+      const restoreBtn = document.createElement("button");
 
+      restoreBtn.textContent = "Restore";
 
-      deleteBtn.addEventListener("click", async () => {
+      restoreBtn.classList.add("restore-btn");
 
-        await deleteDoc(
-          doc(db, "orders", order.id)
-        );
+      restoreBtn.addEventListener("click", async () => {
 
-        renderHistory();
+        try {
+
+          // Change completed back to pending
+          await updateDoc(
+            doc(db, "orders", order.id),
+            {
+              status: "pending"
+            }
+          );
+
+          // Remove it from history immediately
+          renderHistory();
+
+        } catch (error) {
+
+          console.error("Error restoring order:", error);
+
+          alert("Could not restore the order.");
+
+        }
 
       });
 
 
+      // =========================
+      // DELETE BUTTON
+      // =========================
+
+      const deleteBtn = document.createElement("button");
+
+      deleteBtn.textContent = "Delete";
+
+      deleteBtn.classList.add("delete-btn");
+
+
+      deleteBtn.addEventListener("click", async () => {
+
+        try {
+
+          await deleteDoc(
+            doc(db, "orders", order.id)
+          );
+
+          renderHistory();
+
+        } catch (error) {
+
+          console.error("Error deleting order:", error);
+
+          alert("Could not delete the order.");
+
+        }
+
+      });
+
+
+      // Add both buttons
+      li.appendChild(restoreBtn);
       li.appendChild(deleteBtn);
 
       historyList.appendChild(li);
