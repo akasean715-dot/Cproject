@@ -71,9 +71,11 @@ h1 {
   margin: 8px 0 22px;
 }
 
-h1::after {
-  content: " 🍰";
-  font-size: 27px;
+h1 {
+  color: #f52f67;
+  font-size: 38px;
+  font-weight: 800;
+  margin: 8px 0 22px;
 }
 
 /* =========================================
@@ -771,4 +773,52 @@ h2::after {
   display: inline-flex;
   align-items: center;
   gap: 7px;
+}
+/* =========================================
+   CAKE ORDER TRACKER TITLE
+========================================= */
+
+.site-title {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  position: relative;
+}
+
+.desktop-cake {
+  width: 200px;
+  height: 200px;
+  object-fit: contain;
+  position: relative;
+  top: 35px;
+  flex-shrink: 0;
+}
+
+.mobile-cake {
+  display: none;
+}
+
+@media (max-width: 800px) {
+  .desktop-cake {
+    display: none;
+  }
+
+  .mobile-cake {
+    display: inline;
+    font-size: 28px;
+  }
+
+  .site-title {
+    gap: 8px;
+  }
+}
+
+@media (max-width: 400px) {
+  .mobile-cake {
+    font-size: 25px;
+  }
+
+  .site-title {
+    gap: 6px;
+  }
 }
