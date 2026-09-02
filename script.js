@@ -130,10 +130,155 @@ deleteBtn.addEventListener("click", async () => {
 completeBtn.classList.add("complete-btn");
 deleteBtn.classList.add("delete-btn");
 
+
+// =========================
+// EDIT BUTTON
+// =========================
+
+const editBtn = document.createElement("button");
+
+editBtn.classList.add("edit-btn");
+
+editBtn.innerHTML = `
+  <svg
+    class="edit-icon"
+    viewBox="0 0 100 100"
+    xmlns="http://www.w3.org/2000/svg"
+    aria-hidden="true"
+  >
+
+    <!-- Outer corner -->
+    <path
+      d="M25 10
+         H68
+         C72 10 74 13 74 17
+         C74 21 71 24 67 24
+         H32
+         V70
+         H72
+         V53
+         C72 48 75 45 80 45
+         C85 45 88 48 88 53
+         V76
+         C88 84 83 90 75 90
+         H23
+         C14 90 9 84 9 76
+         V24
+         C9 15 15 10 25 10
+         Z"
+      fill="currentColor"
+    />
+
+    <!-- Pencil -->
+    <path
+      d="M31 61
+         V48
+         C31 44 32 41 35 38
+         L67 6
+         C72 1 79 1 84 6
+         L93 15
+         C98 20 98 27 93 32
+         L61 64
+         C58 67 54 69 50 69
+         H37
+         C33 69 31 66 31 61
+         Z"
+      fill="currentColor"
+    />
+
+    <!-- Pencil tip -->
+    <path
+      d="M31 61
+         L29 76
+         L43 69
+         Z"
+      fill="currentColor"
+    />
+
+    <!-- Diamond cutout -->
+    <path
+      d="M68 15
+         L78 5
+         L91 18
+         L81 28
+         Z"
+      fill="white"
+    />
+
+  </svg>
+`;
+// =========================
+// EDIT ORDER
+// =========================
+
+editBtn.addEventListener("click", () => {
+
+  document.getElementById("editName").value = order.name || "";
+  document.getElementById("editCake").value = order.cake || "";
+  document.getElementById("editPrice").value = order.price || "";
+  document.getElementById("editDateTime").value = order.dateTime || "";
+
+  document.getElementById("editPopup").style.display = "flex";
+
+
+  // OK button
+  document.getElementById("editOk").onclick = async () => {
+
+    const newName =
+      document.getElementById("editName").value;
+
+    const newCake =
+      document.getElementById("editCake").value;
+
+    const newPrice =
+      document.getElementById("editPrice").value;
+
+    const newDateTime =
+      document.getElementById("editDateTime").value;
+
+
+    try {
+
+      await updateDoc(
+        doc(db, "orders", order.id),
+        {
+          name: newName,
+          cake: newCake,
+          price: newPrice,
+          dateTime: newDateTime
+        }
+      );
+
+      document.getElementById("editPopup").style.display = "none";
+
+      renderOrders();
+      calculateIncome();
+
+    } catch (error) {
+
+      console.error("Error updating order:", error);
+
+      alert("Could not update the order.");
+
+    }
+
+  };
+
+
+  // Cancel button
+  document.getElementById("editCancel").onclick = () => {
+
+    document.getElementById("editPopup").style.display = "none";
+
+  };
+
+});
+
 li.appendChild(completeBtn);
+li.appendChild(editBtn);
 li.appendChild(deleteBtn);
 
-      orderList.appendChild(li);
+orderList.appendChild(li);
 
     });
 

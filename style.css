@@ -822,3 +822,173 @@ h2::after {
     gap: 6px;
   }
 }
+/* =========================================
+   EDIT ICON - SMALL, PLAIN, ABOVE DELETE
+========================================= */
+
+#orderList li .edit-btn {
+  position: absolute !important;
+
+  right: 20px !important;
+  top: 3px !important;
+
+  width: 24px !important;
+  min-width: 24px !important;
+  height: 16px !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  border: none !important;
+  background: transparent !important;
+
+  color: #f52f67;
+
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+  z-index: 10;
+
+  transform: none !important;
+}
+
+/* REMOVE the old trash icon from the Edit button */
+#orderList li .edit-btn::before {
+  content: none !important;
+}
+
+/* The actual SVG */
+#orderList li .edit-btn .edit-icon {
+  width: 15px !important;
+  height: 15px !important;
+
+  display: block;
+}
+
+/* Hover - still no box */
+#orderList li .edit-btn:hover {
+  background: transparent !important;
+  border: none !important;
+  transform: none !important;
+}
+/* =========================
+   EDIT POPUP
+   ========================= */
+
+.edit-popup {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: transparent;
+  z-index: 9999;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 25px;
+}
+
+.edit-popup-box {
+  width: 450px;
+  background: white;
+  border-radius: 18px;
+  padding: 20px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.edit-popup-title {
+  color: #f52f67;
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 18px;
+}
+
+.edit-popup-box label {
+  display: block;
+  color: #f52f67;
+  font-size: 14px;
+  margin: 10px 0 5px;
+}
+
+.edit-popup-box input {
+  width: 100%;
+  box-sizing: border-box;
+  height: 40px;
+  border: 2px solid #f52f67;
+  border-radius: 8px;
+  padding: 8px 10px;
+  font-size: 14px;
+  outline: none;
+}
+
+.edit-popup-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 18px;
+}
+
+.edit-popup-buttons button {
+  height: 34px;
+  padding: 0 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+#editOk {
+  background: #f52f67;
+  color: white;
+  border: 2px solid #f52f67;
+}
+
+#editCancel {
+  background: white;
+  color: #f52f67;
+  border: 2px solid #f52f67;
+}
+/* =========================
+   EDIT POPUP - MOBILE
+   ========================= */
+
+@media (max-width: 600px) {
+
+  .edit-popup {
+    padding-top: 20px;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  .edit-popup-box {
+    width: 100%;
+    max-width: 360px;
+    box-sizing: border-box;
+    padding: 18px;
+    border-radius: 16px;
+  }
+
+  .edit-popup-title {
+    font-size: 17px;
+    margin-bottom: 15px;
+  }
+
+  .edit-popup-box label {
+    font-size: 13px;
+    margin: 9px 0 5px;
+  }
+
+  .edit-popup-box input {
+    height: 38px;
+    font-size: 14px;
+  }
+
+  .edit-popup-buttons {
+    margin-top: 16px;
+  }
+
+  .edit-popup-buttons button {
+    height: 34px;
+    padding: 0 14px;
+  }
+
+}
