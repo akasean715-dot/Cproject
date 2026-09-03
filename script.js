@@ -11,6 +11,12 @@ import {
   updateDoc
 } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
+import {
+  getAuth,
+  signInWithEmailAndPassword,
+  onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
 
 // Firebase configuration
 const firebaseConfig = {
@@ -27,6 +33,70 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
+const auth = getAuth(app);
+// =========================
+// LOGIN
+// =========================
+
+const loginScreen = document.getElementById("loginScreen");
+const loginButton = document.getElementById("loginButton");
+const loginEmail = document.getElementById("loginEmail");
+const loginPassword = document.getElementById("loginPassword");
+const loginError = document.getElementById("loginError");
+
+
+// Check if user is already signed in
+onAuthStateChanged(auth, (user) => {
+
+  if (user) {
+
+    // User is logged in
+    loginScreen.style.display = "none";
+
+    renderOrders();
+    calculateIncome();
+
+  } else {
+
+    // User is not logged in
+    loginScreen.style.display = "flex";
+
+  }
+
+});
+
+
+// Sign in button
+loginButton.addEventListener("click", async () => {
+
+  const email = loginEmail.value.trim();
+  const password = loginPassword.value;
+
+  loginError.textContent = "";
+
+  if (!email || !password) {
+    loginError.textContent = "Please enter your email and password.";
+    return;
+  }
+
+  try {
+
+    await signInWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
+
+  } catch (error) {
+
+    console.error("Login error:", error);
+
+    loginError.textContent =
+      "Incorrect email or password.";
+
+  }
+
+});
 
 
 // Get HTML elements
@@ -104,9 +174,6 @@ async function renderOrders() {
              status: "completed"
            }
         );
-
-  renderOrders();
-  calculateIncome();
 
 });
 
