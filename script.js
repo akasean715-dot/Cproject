@@ -463,6 +463,3 @@ async function calculateIncome() {
   }
 
 }
-// Load orders when website opens
-renderOrders();
-calculateIncome();
