@@ -196,14 +196,46 @@ const deleteBtn = document.createElement("button");
 
 deleteBtn.textContent = "Delete";
 
-deleteBtn.addEventListener("click", async () => {
+deleteBtn.addEventListener("click", () => {
 
-  await deleteDoc(
-    doc(db, "orders", order.id)
-  );
+  const deletePopup = document.getElementById("deleteConfirmPopup");
+  const deleteMessage = document.getElementById("deleteConfirmMessage");
+  const deleteConfirmButton = document.getElementById("deleteConfirmButton");
+  const deleteCancelButton = document.getElementById("deleteCancelButton");
 
-  renderOrders();
-  calculateIncome();
+  deleteMessage.textContent =
+    `Are you sure you want to delete "${order.name} - ${order.cake}"?`;
+
+  deletePopup.style.display = "flex";
+
+  deleteConfirmButton.onclick = async () => {
+
+    try {
+
+      await deleteDoc(
+        doc(db, "orders", order.id)
+      );
+
+      deletePopup.style.display = "none";
+
+      renderOrders();
+      calculateIncome();
+
+    } catch (error) {
+
+      console.error("Error deleting order:", error);
+
+      alert("Could not delete the order.");
+
+    }
+
+  };
+
+  deleteCancelButton.onclick = () => {
+
+    deletePopup.style.display = "none";
+
+  };
 
 });
 

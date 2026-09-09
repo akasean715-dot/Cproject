@@ -1589,3 +1589,168 @@ h2::after {
     font-size: 26px;
   }
 }
+/* =========================
+   DELETE CONFIRMATION POPUP
+   ========================= */
+
+.delete-confirm-popup {
+  position: fixed;
+  inset: 0;
+
+  display: none;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(245, 47, 103, 0.12);
+
+  backdrop-filter: blur(4px);
+
+  z-index: 9999;
+}
+
+.delete-confirm-box {
+  width: 330px;
+  max-width: calc(100% - 40px);
+
+  padding: 25px 22px 22px;
+
+  background: #fff8fa;
+
+  border: 1px solid #ffd6e2;
+  border-radius: 20px;
+
+  text-align: center;
+
+  box-shadow:
+    0 15px 35px rgba(245, 47, 103, 0.20),
+    0 5px 12px rgba(0, 0, 0, 0.08);
+
+  animation: deletePopupIn 0.25s ease;
+}
+
+.delete-confirm-icon {
+  width: 55px;
+  height: 55px;
+
+  margin: 0 auto 12px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #ffe1eb;
+
+  border-radius: 50%;
+
+  font-size: 25px;
+
+  box-shadow:
+    inset 2px 2px 5px rgba(255, 255, 255, 0.9),
+    4px 5px 10px rgba(245, 47, 103, 0.15);
+}
+
+.delete-confirm-box h3 {
+  margin: 5px 0 8px;
+
+  color: #f52f67;
+
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.delete-confirm-box p {
+  margin: 0 auto 20px;
+
+  color: #777;
+
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.delete-confirm-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.delete-confirm-buttons button {
+  height: 40px;
+
+  padding: 0 20px;
+
+  border-radius: 10px;
+
+  font-size: 13px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+#deleteCancelButton {
+  background: white;
+
+  border: 2px solid #f52f67;
+
+  color: #f52f67;
+}
+
+#deleteCancelButton:hover {
+  background: #fff0f4;
+}
+
+#deleteConfirmButton {
+  background: #f52f67;
+
+  border: 2px solid #f52f67;
+
+  color: white;
+
+  box-shadow: 0 4px 10px rgba(245, 47, 103, 0.20);
+}
+
+#deleteConfirmButton:hover {
+  transform: translateY(-1px);
+
+  box-shadow: 0 6px 14px rgba(245, 47, 103, 0.28);
+}
+
+#deleteConfirmButton:active,
+#deleteCancelButton:active {
+  transform: scale(0.97);
+}
+
+@keyframes deletePopupIn {
+  from {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Mobile */
+@media (max-width: 800px) {
+
+  .delete-confirm-box {
+    width: 300px;
+    padding: 22px 18px 19px;
+  }
+
+  .delete-confirm-box h3 {
+    font-size: 18px;
+  }
+
+  .delete-confirm-box p {
+    font-size: 13px;
+  }
+
+  .delete-confirm-buttons button {
+    height: 38px;
+    padding: 0 17px;
+  }
+}
