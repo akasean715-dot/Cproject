@@ -326,9 +326,44 @@
     ← Upcoming Orders
   </a>
 
+  <div class="orders-heading">
   <h2>Completed Orders</h2>
 
-  <ul id="historyList"></ul>
+  <div class="search-container">
+
+    <!-- Search icon button -->
+    <button id="searchToggle" class="search-toggle" aria-label="Search orders">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <circle cx="10.8" cy="10.8" r="6.8"></circle>
+        <line x1="16" y1="16" x2="21" y2="21"></line>
+      </svg>
+    </button>
+
+    <!-- Expanded search bar -->
+    <div id="searchBox" class="search-box">
+
+      <svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true">
+        <circle cx="10.8" cy="10.8" r="6.8"></circle>
+        <line x1="16" y1="16" x2="21" y2="21"></line>
+      </svg>
+
+      <input
+        type="text"
+        id="searchInput"
+        placeholder="Search by customer name or cake type..."
+        autocomplete="off"
+      >
+
+      <button id="searchClose" class="search-close" aria-label="Close search">
+        ×
+      </button>
+
+    </div>
+
+  </div>
+</div>
+
+<ul id="historyList"></ul>
 
   <script type="module" src="history.js"></script>
 

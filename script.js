@@ -105,7 +105,7 @@ const orderList = document.getElementById("orderList");
 
 
 // Display orders from Firestore
-async function renderOrders() {
+async function renderOrders(searchTerm = "") {
 
   orderList.innerHTML = "";
 
@@ -129,7 +129,20 @@ async function renderOrders() {
       return new Date(a.dateTime) - new Date(b.dateTime);
     });
 
-   orders.forEach((order) => {
+   orders
+  .filter((order) => {
+
+    if (!searchTerm) return true;
+
+    const search = searchTerm.toLowerCase();
+
+    return (
+      (order.name || "").toLowerCase().includes(search) ||
+      (order.cake || "").toLowerCase().includes(search)
+    );
+
+  })
+  .forEach((order) => {
 
   if (order.status === "completed") {
     return;
@@ -501,5 +514,39 @@ refreshButton.addEventListener("click", async () => {
     }, 500);
 
   }
+
+});
+// =========================
+// SEARCH ORDERS
+// =========================
+
+const searchToggle = document.getElementById("searchToggle");
+const searchContainer = document.querySelector(".search-container");
+const searchInput = document.getElementById("searchInput");
+const searchClose = document.getElementById("searchClose");
+
+searchToggle.addEventListener("click", () => {
+
+  searchContainer.classList.add("search-open");
+
+  setTimeout(() => {
+    searchInput.focus();
+  }, 300);
+
+});
+
+searchClose.addEventListener("click", () => {
+
+  searchInput.value = "";
+
+  searchContainer.classList.remove("search-open");
+
+  renderOrders();
+
+});
+
+searchInput.addEventListener("input", () => {
+
+  renderOrders(searchInput.value.trim());
 
 });

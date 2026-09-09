@@ -28,7 +28,7 @@ const db = getFirestore(app);
 const historyList = document.getElementById("historyList");
 
 
-async function renderHistory() {
+async function renderHistory(searchTerm = "") {
 
   historyList.innerHTML = "";
 
@@ -62,7 +62,20 @@ async function renderHistory() {
     });
 
 
-    orders.forEach((order) => {
+    orders
+  .filter((order) => {
+
+    if (!searchTerm) return true;
+
+    const search = searchTerm.toLowerCase();
+
+    return (
+      (order.name || "").toLowerCase().includes(search) ||
+      (order.cake || "").toLowerCase().includes(search)
+    );
+
+  })
+  .forEach((order) => {
 
       const li = document.createElement("li");
 
@@ -177,3 +190,37 @@ async function renderHistory() {
 
 
 renderHistory();
+// =========================
+// SEARCH HISTORY
+// =========================
+
+const searchToggle = document.getElementById("searchToggle");
+const searchContainer = document.querySelector(".search-container");
+const searchInput = document.getElementById("searchInput");
+const searchClose = document.getElementById("searchClose");
+
+searchToggle.addEventListener("click", () => {
+
+  searchContainer.classList.add("search-open");
+
+  setTimeout(() => {
+    searchInput.focus();
+  }, 300);
+
+});
+
+searchClose.addEventListener("click", () => {
+
+  searchInput.value = "";
+
+  searchContainer.classList.remove("search-open");
+
+  renderHistory();
+
+});
+
+searchInput.addEventListener("input", () => {
+
+  renderHistory(searchInput.value.trim());
+
+});
