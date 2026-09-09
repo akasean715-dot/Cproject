@@ -1078,3 +1078,244 @@ h2::after {
   }
 
 }
+/* =========================
+   REFRESH BUTTON ANIMATION
+   ========================= */
+
+.refresh-button {
+  position: relative;
+
+  width: 150px;
+  height: 50px;
+
+  padding: 0;
+  margin: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: none;
+  border-radius: 30px;
+
+  background: #f52f67;
+
+  color: white;
+
+  cursor: pointer;
+
+  overflow: hidden;
+
+  box-shadow: 0 5px 12px rgba(245, 47, 103, 0.25);
+
+  transition:
+    width 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+    height 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+    border-radius 0.45s ease,
+    box-shadow 0.3s ease,
+    transform 0.2s ease;
+}
+
+
+/* =========================
+   REFRESH TEXT
+   ========================= */
+
+.refresh-label {
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+
+  white-space: nowrap;
+
+  opacity: 1;
+  transform: scale(1);
+
+  transition:
+    opacity 0.2s ease,
+    transform 0.3s ease;
+}
+
+
+/* =========================
+   LOADER
+   ========================= */
+
+.refresh-loader {
+  position: absolute;
+
+  width: 25px;
+  height: 25px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  opacity: 0;
+  transform: scale(0.5);
+
+  pointer-events: none;
+
+  transition:
+    opacity 0.2s ease,
+    transform 0.3s ease;
+}
+
+
+.refresh-loader svg {
+  width: 25px;
+  height: 25px;
+
+  animation: refreshSpin 0.8s linear infinite;
+}
+
+
+/* =========================
+   LOADING STATE
+   ========================= */
+
+.refresh-button.loading {
+  width: 50px;
+  height: 50px;
+
+  border-radius: 50%;
+
+  box-shadow: 0 5px 12px rgba(245, 47, 103, 0.25);
+}
+
+
+/* Hide REFRESH text */
+
+.refresh-button.loading .refresh-label {
+  opacity: 0;
+
+  transform: scale(0.5);
+}
+
+
+/* Show loader */
+
+.refresh-button.loading .refresh-loader {
+  opacity: 1;
+
+  transform: scale(1);
+}
+
+
+/* =========================
+   SPINNER ANIMATION
+   ========================= */
+
+@keyframes refreshSpin {
+
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+
+}
+
+
+/* =========================
+   HOVER
+   ========================= */
+
+.refresh-button:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 8px 18px rgba(245, 47, 103, 0.30);
+}
+
+
+/* =========================
+   CLICK
+   ========================= */
+
+.refresh-button:active {
+  transform: translateY(1px);
+}
+
+
+/* =========================
+   HISTORY + REFRESH BUTTONS
+   ========================= */
+
+.action-buttons {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: flex-start;
+
+  gap: 10px;
+
+  width: 100%;
+
+  margin: 15px 0 20px;
+
+  padding-left: 43px;
+
+  box-sizing: border-box;
+}
+/* =========================
+   BUTTON ORDER
+   ========================= */
+
+.action-buttons .history-button {
+  order: 1;
+}
+
+.action-buttons .refresh-button {
+  order: 2;
+}
+/* Move only Refresh button upward */
+
+.action-buttons .refresh-button {
+  transform: translateY(-8px);
+}
+
+/* =========================
+   MOBILE
+   ========================= */
+
+@media (max-width: 800px) {
+
+  .action-buttons {
+    gap: 10px;
+  }
+
+
+  .refresh-button {
+    width: 140px;
+    height: 48px;
+
+    margin: 0;
+  }
+
+
+  .refresh-button.loading {
+    width: 48px;
+    height: 48px;
+  }
+
+
+  .refresh-label {
+    font-size: 14px;
+  }
+
+}
+/* Make only Refresh button smaller */
+
+.action-buttons .refresh-button {
+  width: 120px;
+  height: 42px;
+}
+
+.action-buttons .refresh-button.loading {
+  width: 42px;
+  height: 42px;
+}

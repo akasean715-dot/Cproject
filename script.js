@@ -463,3 +463,43 @@ async function calculateIncome() {
   }
 
 }
+// =========================
+// REFRESH BUTTON
+// =========================
+
+const refreshButton = document.getElementById("refreshButton");
+
+refreshButton.addEventListener("click", async () => {
+
+  // Start the pill → circle animation
+  refreshButton.classList.add("loading");
+
+  // Prevent clicking multiple times
+  refreshButton.disabled = true;
+
+  try {
+
+    // Fetch the latest Firestore data
+    await Promise.all([
+      renderOrders(),
+      calculateIncome()
+    ]);
+
+  } catch (error) {
+
+    console.error("Error refreshing data:", error);
+
+  } finally {
+
+    // Wait a little so the animation can be seen
+    setTimeout(() => {
+
+      refreshButton.classList.remove("loading");
+
+      refreshButton.disabled = false;
+
+    }, 500);
+
+  }
+
+});
