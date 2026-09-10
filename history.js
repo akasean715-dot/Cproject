@@ -237,41 +237,11 @@ pageOrders.forEach((order) => {
       });
 
 
-      // =========================
-      // DELETE BUTTON
-      // =========================
-
-      const deleteBtn = document.createElement("button");
-
-      deleteBtn.textContent = "Delete";
-
-      deleteBtn.classList.add("delete-btn");
-
-
-      deleteBtn.addEventListener("click", async () => {
-
-        try {
-
-          await deleteDoc(
-            doc(db, "orders", order.id)
-          );
-
-          renderHistory();
-
-        } catch (error) {
-
-          console.error("Error deleting order:", error);
-
-          alert("Could not delete the order.");
-
-        }
-
-      });
+      
 
 
       // Add both buttons
       li.appendChild(restoreBtn);
-      li.appendChild(deleteBtn);
 
       historyList.appendChild(li);
 
