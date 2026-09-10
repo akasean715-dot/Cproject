@@ -315,6 +315,480 @@
         font-size: 10px;
       }
     }
+/* =========================================
+   CUTE PAGINATION
+========================================= */
+
+.history-pagination {
+  margin: 25px auto 10px;
+
+  width: fit-content;
+  max-width: calc(100% - 20px);
+
+  min-height: 58px;
+
+  padding: 8px 12px;
+
+  background: white;
+
+  border: 1px solid #f4dce5;
+  border-radius: 12px;
+
+  box-shadow: 0 4px 15px rgba(245, 47, 103, 0.08);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+}
+
+
+/* Previous / Next */
+
+.history-pagination .page-arrow {
+  width: 40px;
+  height: 40px;
+
+  border: none;
+  border-radius: 8px;
+
+  background: #ffffff;
+
+  color: #999;
+
+  font-size: 25px;
+  line-height: 1;
+
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+
+.history-pagination .page-arrow:hover:not(:disabled) {
+  background: #fff0f4;
+  color: #f52f67;
+}
+
+
+.history-pagination .page-arrow:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+
+/* Current page */
+
+.history-pagination .page-current {
+  width: 40px;
+  height: 40px;
+
+  border-radius: 8px;
+
+  background: #f52f67;
+
+  color: white;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 14px;
+  font-weight: 700;
+
+  box-shadow: 0 4px 10px rgba(245, 47, 103, 0.25);
+}
+
+
+/* "of 10" */
+
+.history-pagination .page-of {
+  color: #777;
+
+  font-size: 12px;
+  font-weight: 500;
+
+  white-space: nowrap;
+}
+
+
+/* Page 1 of 10 */
+
+.history-pagination .page-info {
+  margin-left: 5px;
+
+  color: #888;
+
+  font-size: 12px;
+  font-weight: 500;
+
+  white-space: nowrap;
+}
+
+
+/* Page label */
+
+.history-pagination .page-label {
+  margin-left: 10px;
+
+  color: #555;
+
+  font-size: 12px;
+  font-weight: 600;
+}
+
+
+/* Page dropdown */
+
+.history-pagination .page-select {
+  width: 48px;
+  height: 36px;
+
+  padding: 0 5px;
+
+  background: white;
+
+  border: 1px solid #f0d9e2;
+  border-radius: 8px;
+
+  color: #444;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  text-align: center;
+
+  cursor: pointer;
+
+  outline: none;
+}
+
+
+.history-pagination .page-select:focus {
+  border-color: #f52f67;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+
+  .history-pagination {
+    width: calc(100% - 20px);
+
+    padding: 7px 6px;
+
+    gap: 5px;
+
+    min-height: 52px;
+  }
+
+  .history-pagination .page-arrow {
+    width: 34px;
+    height: 34px;
+
+    font-size: 22px;
+  }
+
+  .history-pagination .page-current {
+    width: 34px;
+    height: 34px;
+
+    font-size: 12px;
+  }
+
+  .history-pagination .page-info {
+    display: none;
+  }
+
+  .history-pagination .page-label {
+    margin-left: 4px;
+
+    font-size: 11px;
+  }
+
+  .history-pagination .page-select {
+    width: 45px;
+    height: 32px;
+
+    font-size: 11px;
+  }
+
+  .history-pagination .page-of {
+    font-size: 11px;
+  }
+}
+
+/* =========================================
+   CUTE HEART PAGINATION
+========================================= */
+
+.history-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+
+  margin: 30px auto 10px;
+  padding: 12px 18px;
+
+  background: white;
+
+  border: 1px solid #ffd6e2;
+  border-radius: 14px;
+
+  box-shadow: 0 4px 14px rgba(255, 92, 137, 0.08);
+
+  width: fit-content;
+  max-width: 100%;
+}
+
+
+/* Heart buttons */
+
+.page-arrow {
+  width: 42px;
+  height: 42px;
+
+  border: 1px solid #ffd6e2;
+  border-radius: 12px;
+
+  background: #fff8fa;
+
+  color: #f52f67;
+
+  font-size: 21px;
+  line-height: 1;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+
+/* Heart hover */
+
+.page-arrow:hover:not(:disabled) {
+  background: #fff0f5;
+
+  transform: scale(1.08);
+}
+
+
+/* Disabled heart */
+
+.page-arrow:disabled {
+  color: #e8cbd4;
+
+  background: #fffafa;
+
+  border-color: #f4e5e9;
+
+  cursor: default;
+
+  opacity: 0.75;
+}
+
+
+/* Current page */
+
+.page-current {
+  width: 42px;
+  height: 42px;
+
+  background: linear-gradient(
+    135deg,
+    #ff3971,
+    #f52f67
+  );
+
+  color: white;
+
+  border-radius: 11px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 14px;
+  font-weight: 700;
+
+  box-shadow: 0 4px 10px rgba(245, 47, 103, 0.20);
+}
+
+
+/* "of 10" */
+
+.page-of {
+  font-size: 13px;
+  color: #555;
+  white-space: nowrap;
+}
+
+
+/* Page 1 of 10 */
+
+.page-info {
+  font-size: 13px;
+  color: #555;
+
+  white-space: nowrap;
+
+  margin-left: 10px;
+}
+
+
+/* Page label */
+
+.page-label {
+  font-size: 13px;
+  font-weight: 600;
+
+  color: #333;
+
+  margin-left: 8px;
+}
+
+
+/* Page dropdown */
+
+.page-select {
+  height: 42px;
+  min-width: 58px;
+
+  padding: 0 10px;
+
+  background: white;
+
+  border: 1px solid #ffd6e2;
+  border-radius: 10px;
+
+  color: #333;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  outline: none;
+}
+
+
+.page-select:focus {
+  border-color: #ff8eaa;
+
+  box-shadow: 0 0 0 3px rgba(255, 92, 137, 0.08);
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+
+  .history-pagination {
+    width: calc(100% - 20px);
+
+    gap: 8px;
+
+    padding: 9px 10px;
+
+    margin-top: 25px;
+
+    border-radius: 13px;
+  }
+
+  .page-arrow {
+    width: 36px;
+    height: 36px;
+
+    border-radius: 10px;
+
+    font-size: 18px;
+  }
+
+  .page-current {
+    width: 36px;
+    height: 36px;
+
+    border-radius: 9px;
+
+    font-size: 13px;
+  }
+
+  .page-of,
+  .page-info,
+  .page-label {
+    font-size: 11px;
+  }
+
+  .page-info {
+    margin-left: 2px;
+  }
+
+  .page-label {
+    margin-left: 2px;
+  }
+
+  .page-select {
+    height: 36px;
+
+    min-width: 48px;
+
+    padding: 0 6px;
+
+    font-size: 12px;
+
+    border-radius: 9px;
+  }
+}
+
+
+/* =========================================
+   VERY SMALL PHONES
+========================================= */
+
+@media (max-width: 400px) {
+
+  .history-pagination {
+    gap: 5px;
+
+    padding: 8px 7px;
+  }
+
+  .page-arrow {
+    width: 33px;
+    height: 33px;
+
+    font-size: 16px;
+  }
+
+  .page-current {
+    width: 33px;
+    height: 33px;
+  }
+
+  .page-of,
+  .page-info,
+  .page-label {
+    font-size: 10px;
+  }
+
+  .page-select {
+    min-width: 43px;
+    height: 33px;
+
+    font-size: 11px;
+  }
+}
 </style>
 </head>
 
@@ -365,7 +839,51 @@
 
 <ul id="historyList"></ul>
 
-  <script type="module" src="history.js"></script>
+<!-- =========================
+     PAGINATION
+========================= -->
+
+<div class="history-pagination">
+
+  <!-- Previous -->
+  <button id="previousPage" class="page-arrow" aria-label="Previous page">
+    ♥
+  </button>
+
+  <!-- Current page -->
+  <div class="page-current">
+    <span id="currentPageNumber">1</span>
+  </div>
+
+  <!-- Of total -->
+  <span class="page-of">
+    of <span id="totalPages">1</span>
+  </span>
+
+  <!-- Page information -->
+  <span class="page-info">
+    Page <span id="pageInfoNumber">1</span>
+    of <span id="pageInfoTotal">1</span>
+  </span>
+
+  <!-- Go to page -->
+  <span class="page-label">Page</span>
+
+  <select id="pageSelect" class="page-select" aria-label="Go to page">
+  </select>
+
+  <span class="page-of">
+    of <span id="pageSelectTotal">1</span>
+  </span>
+
+  <!-- Next -->
+  <button id="nextPage" class="page-arrow" aria-label="Next page">
+    ♥
+  </button>
+
+</div>
+
+<script type="module" src="history.js"></script>
 
 </body>
 </html>

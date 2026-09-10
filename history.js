@@ -27,6 +27,37 @@ const db = getFirestore(app);
 
 const historyList = document.getElementById("historyList");
 
+// =========================
+// PAGINATION
+// =========================
+
+const previousPage = document.getElementById("previousPage");
+const nextPage = document.getElementById("nextPage");
+
+const currentPageNumber =
+  document.getElementById("currentPageNumber");
+
+const totalPagesDisplay = 
+  document.getElementById("totalPages");
+
+const pageInfoNumber =
+  document.getElementById("pageInfoNumber");
+
+const pageInfoTotal =
+  document.getElementById("pageInfoTotal");
+
+const pageSelect =
+  document.getElementById("pageSelect");
+
+const pageSelectTotal =
+  document.getElementById("pageSelectTotal");
+
+
+let currentPage = 1;
+
+const ordersPerPage = 20;
+
+let filteredOrders = [];
 
 async function renderHistory(searchTerm = "") {
 
@@ -60,22 +91,89 @@ async function renderHistory(searchTerm = "") {
     orders.sort((a, b) => {
       return new Date(a.dateTime) - new Date(b.dateTime);
     });
+    // =========================
+// FILTER SEARCH RESULTS
+// =========================
+
+filteredOrders = orders.filter((order) => {
+
+  if (!searchTerm) return true;
+
+  const search = searchTerm.toLowerCase();
+
+  return (
+    (order.name || "").toLowerCase().includes(search) ||
+    (order.cake || "").toLowerCase().includes(search)
+  );
+
+});
 
 
-    orders
-  .filter((order) => {
+// =========================
+// PAGINATION
+// =========================
 
-    if (!searchTerm) return true;
+const totalPageCount = Math.max(
+  1,
+  Math.ceil(filteredOrders.length / ordersPerPage)
+);
 
-    const search = searchTerm.toLowerCase();
+// Keep page valid after searching/deleting
+if (currentPage > totalPageCount) {
+  currentPage = totalPageCount;
+}
 
-    return (
-      (order.name || "").toLowerCase().includes(search) ||
-      (order.cake || "").toLowerCase().includes(search)
-    );
+const startIndex = (currentPage - 1) * ordersPerPage;
+const endIndex = startIndex + ordersPerPage;
 
-  })
-  .forEach((order) => {
+const pageOrders = filteredOrders.slice(
+  startIndex,
+  endIndex
+);
+
+
+// =========================
+// UPDATE PAGINATION UI
+// =========================
+
+previousPage.disabled = currentPage === 1;
+nextPage.disabled = currentPage === totalPageCount;
+
+// Current page
+currentPageNumber.textContent = currentPage;
+
+// Total pages
+totalPagesDisplay.textContent = totalPageCount;
+
+// Page information
+pageInfoNumber.textContent = currentPage;
+pageInfoTotal.textContent = totalPageCount;
+
+// Dropdown total
+pageSelectTotal.textContent = totalPageCount;
+
+
+// =========================
+// FILL PAGE DROPDOWN
+// =========================
+
+pageSelect.innerHTML = "";
+
+for (let i = 1; i <= totalPageCount; i++) {
+
+  const option = document.createElement("option");
+
+  option.value = i;
+  option.textContent = i;
+
+  if (i === currentPage) {
+    option.selected = true;
+  }
+
+  pageSelect.appendChild(option);
+
+}
+pageOrders.forEach((order) => {
 
       const li = document.createElement("li");
 
@@ -213,6 +311,8 @@ searchClose.addEventListener("click", () => {
 
   searchInput.value = "";
 
+  currentPage = 1;
+
   searchContainer.classList.remove("search-open");
 
   renderHistory();
@@ -220,6 +320,54 @@ searchClose.addEventListener("click", () => {
 });
 
 searchInput.addEventListener("input", () => {
+
+  currentPage = 1;
+
+  renderHistory(searchInput.value.trim());
+
+});
+// =========================
+// PAGINATION BUTTONS
+// =========================
+
+previousPage.addEventListener("click", () => {
+
+  if (currentPage > 1) {
+
+    currentPage--;
+
+    renderHistory(searchInput.value.trim());
+
+  }
+
+});
+
+
+nextPage.addEventListener("click", () => {
+
+  const totalPageCount = Math.max(
+    1,
+    Math.ceil(filteredOrders.length / ordersPerPage)
+  );
+
+  if (currentPage < totalPageCount) {
+
+    currentPage++;
+
+    renderHistory(searchInput.value.trim());
+
+  }
+
+});
+
+
+// =========================
+// GO TO PAGE
+// =========================
+
+pageSelect.addEventListener("change", () => {
+
+  currentPage = Number(pageSelect.value);
 
   renderHistory(searchInput.value.trim());
 
