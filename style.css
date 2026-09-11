@@ -2387,3 +2387,17 @@ h2::after {
   vertical-align: middle;
   margin-right: 6px;
 }
+@media (max-width: 800px) {
+
+  .income-button {
+    height: 43px;
+    padding: 0 13px;
+    font-size: 12px;
+  }
+
+  .income-icon {
+    width: 20px;
+    height: 20px;
+  }
+
+}
