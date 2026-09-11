@@ -548,7 +548,7 @@ h2::after {
 .history-button {
   display: inline-block;
   margin-bottom: 20px;
-  padding: 11px 18px;
+  padding: 7px 12px;
 
   background: white;
   color: #f52f67;
@@ -557,7 +557,7 @@ h2::after {
   border-radius: 10px;
 
   text-decoration: none;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: bold;
 
   transition: 0.2s;
@@ -603,7 +603,12 @@ h2::after {
 
 @media (max-width: 800px) {
 
-  .history-button,
+  .history-button {
+    padding: 6px 10px;
+    font-size: 12px;
+    margin-bottom: 15px;
+  }
+
   .back-button {
     padding: 9px 14px;
     font-size: 13px;
@@ -611,6 +616,7 @@ h2::after {
   }
 
 }
+
 /* =========================================
    COMPLETE + DELETE BUTTONS
 ========================================= */
@@ -1290,16 +1296,16 @@ h2::after {
 
 
   .refresh-button {
-    width: 140px;
-    height: 48px;
+    width: 95px;
+    height: 38px;
 
     margin: 0;
   }
 
 
   .refresh-button.loading {
-    width: 48px;
-    height: 48px;
+    width: 38px;
+    height: 38px;
   }
 
 
@@ -1311,13 +1317,13 @@ h2::after {
 /* Make only Refresh button smaller */
 
 .action-buttons .refresh-button {
-  width: 120px;
-  height: 42px;
+  width: 110px;
+  height: 40px;
 }
 
 .action-buttons .refresh-button.loading {
-  width: 42px;
-  height: 42px;
+  width: 40px;
+  height: 40px;
 }
 /* =========================
    SEARCH BUTTON & SEARCH BAR
@@ -2283,57 +2289,50 @@ h2::after {
    INCOME HISTORY BUTTON
    ========================= */
 
+/* =========================
+   INCOME HISTORY BUTTON
+   ========================= */
+
 .income-button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
 
-  height: 48px;
-  padding: 0 18px;
+  height: 42px;
+  padding: 0 13px;
 
   background: white;
   border: 2px solid #ff4b7b;
-  border-radius: 12px;
+  border-radius: 10px;
 
   color: #ed2d63;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 700;
 
   text-decoration: none;
   cursor: pointer;
 
   transition: .2s ease;
+
+  transform: translateY(-8px);
 }
 
 .income-button:hover {
   background: #fff0f4;
-  transform: translateY(-1px);
+  transform: translateY(-9px);
 }
 
 .income-button:active {
-  transform: scale(.97);
+  transform: translateY(-8px) scale(.97);
 }
 
 .income-icon {
-  width: 23px;
-  height: 23px;
+  width: 21px;
+  height: 21px;
   flex-shrink: 0;
 }
-.income-button {
-  height: 47px;
-  padding: 0 17px;
-  font-size: 13px;
-  transform: translateY(-8px);
-}
 
-.income-icon {
-  width: 24px;
-  height: 24px;
-}
-.income-button {
-  transform: translateY(-8px);
-}
 /* =========================
    CUTE INCOME SVG ICONS
    ========================= */
