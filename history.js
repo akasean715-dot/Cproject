@@ -10,9 +10,14 @@ import {
   updateDoc
 } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
+import {
+  getAuth,
+  onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAOLlqzezG31BE97H4IcKo0DPHwVjKbUfG",
+  apiKey: "AIzaSyAOLlqzezG31BE97H4IcKo0DPHwVjKbUfU",
   authDomain: "shanlang-167ed.firebaseapp.com",
   projectId: "shanlang-167ed",
   storageBucket: "shanlang-167ed.firebasestorage.app",
@@ -24,6 +29,7 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
+const auth = getAuth(app);
 
 const historyList = document.getElementById("historyList");
 
@@ -257,7 +263,19 @@ pageOrders.forEach((order) => {
 }
 
 
-renderHistory();
+onAuthStateChanged(auth, (user) => {
+
+  if (user) {
+
+    renderHistory();
+
+  } else {
+
+    window.location.href = "index.html";
+
+  }
+
+});
 // =========================
 // SEARCH HISTORY
 // =========================
