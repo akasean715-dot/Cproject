@@ -7,6 +7,11 @@ import {
   getDocs
 } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
+import {
+  getAuth,
+  onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
 
 /* =========================
    FIREBASE
@@ -24,6 +29,7 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
+const auth = getAuth(app);
 
 
 /* =========================
@@ -389,4 +395,21 @@ monthSelect.value =
 yearSelect.value =
   currentDate.getFullYear();
 
-loadIncome();
+
+// =========================
+// WAIT FOR FIREBASE LOGIN
+// =========================
+
+onAuthStateChanged(auth, (user) => {
+
+  if (user) {
+
+    loadIncome();
+
+  } else {
+
+    window.location.href = "index.html";
+
+  }
+
+});
